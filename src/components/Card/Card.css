@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 450px;
+    margin: 10px;
+    margin-bottom: 70px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+
+}
+
+.titulo1 {
+    align-self: flex-start;
+    margin: 10px;
+    
+}
+
+.boton {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    padding: 20px 0 20px 0;
+}
+
+.primero {
+    background-color: white;
+    color: black;
+    border: 1px solid #000;
+}
+
+.segundo {
+    border: 1px solid #000;
+    background-color: black;
+}
+
+.titulo2 {
+    padding: 25px 0 15px 0;
+    color: #aaa;
+    
+}
+
+.precio1 {
+    padding: 15px 0 5px 0;
+    font-size: 23px;
+}
+
+.ingredientes {
+    color: #555;
+    text-align: center;
+    padding: 0 20px 0 20px;
+}
+
