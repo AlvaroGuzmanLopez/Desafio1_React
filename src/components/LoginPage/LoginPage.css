@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #f8f8f8;
+}
+
+.formulario-login p{
+    padding-top: 15px;
+    font-weight: 600;
+
+}
+
+.formulario-login button {
+    margin-top: 15px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    background-color: #1976D2;
+}
+
+.formulario-login input {
+    width: 250px;
+    height: 25px;
+}
+
+/* Estilo que se activa si el campo es inválido (vacío O menos de 6 caracteres) */
+input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: red;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Opcional: Estilo cuando la entrada es válida */
+input:valid {
+    border-right: 5px solid green;
+}
