@@ -1,28 +1,29 @@
 import Card from "../Card/Card"
 import Header from "../Header/Header"
 import './home.css'
+import {pizzas} from '../../utils/pizzas.js'
+import { useState } from "react"
 
 
 const Home = () => {
+  const [pizzaData, setPizzaData] = useState(pizzas);
   return (
     <div>
         <Header></Header>
         <div className="card-container">
-          <Card
-          name="Napolitana"
-          price={5950}
-          ingredientes={["mozzarella, tomates, jamón, orégano"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"></Card>
-          <Card
-          name="Española"
-          price={6950}
-          ingredientes={["mozzarella, gorgonzola, parmesano, provolone"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fcheese-164872_640_com.jpg?alt=media&token=18b2b821-4d0d-43f2-a1c6-8c57bc388fab"></Card>
-          <Card
-          name="Pepperoni"
-          price={6950}
-          ingredientes={["mozzarella, pepperoni, orégano"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-ac54-90f6c31eb3e3"></Card>
+          {
+            pizzaData.map((pizzaData) =>{
+              return (
+                  <Card
+                  key={pizzaData.id}
+                  name={pizzaData.name}
+                  price={pizzaData.price}               
+                  ingredientes={pizzaData.ingredients}
+                  img={pizzaData.img}>
+                  </Card>
+              )
+            })
+          }
         </div>
     </div>
   )
