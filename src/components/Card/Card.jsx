@@ -13,7 +13,14 @@ const Card = (props) => {
           </div>
           <hr/>
           <h3 className='titulo2'>Ingredientes</h3>
-          <p className='ingredientes'>🍕 {props.ingredientes}</p>
+
+          <ul>
+            {props.ingredientes.map((ingrediente, index) => (
+              <li key={index} className='ingredientes'>🍕 {ingrediente}</li>
+            ))}         
+          
+          </ul>
+
           <hr/>
           <strong className='precio1'>Precio: ${formatPrice(props.price)}</strong>
           <div className='boton'>

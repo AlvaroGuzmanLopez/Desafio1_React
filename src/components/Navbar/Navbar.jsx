@@ -10,18 +10,18 @@ const Navbar = () => {
         <div className="navbar">
             
         
-            <p>Pizzería Mamma Mia!</p>
-            <button>🍕 Home</button>
+            <p className='p-navbar'>Pizzería Mamma Mia!</p>
+            <button className='boton-navbar'>🍕 Home</button>
 
             {token ? (
                 <>
-                <button>🔓 Profile</button>
-                <button>🔒 Logout</button>
+                <button className='boton-navbar'>🔓 Profile</button>
+                <button className='boton-navbar'>🔒 Logout</button>
                 </>
             ) : (
                 <>
-                <button>🔐 Login</button>
-                <button>🔐 Register</button>
+                <button className='boton-navbar'>🔐 Login</button>
+                <button className='boton-navbar'>🔐 Register</button>
                 </>
             )}
 
