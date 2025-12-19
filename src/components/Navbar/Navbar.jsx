@@ -25,7 +25,7 @@ const Navbar = () => {
                 </>
             )}
 
-            <butoon className='precio'>🛒 Total: ${formatPrice(total)}</butoon>
+            <button className='precio'>🛒 Total: ${formatPrice(total)}</button>
 
         </div>
     )

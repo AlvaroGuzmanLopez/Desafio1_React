@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.pizza-page {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px 0 20px 0;
+}
+.container-pizza {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.card-pizza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    margin: 10px;
+    margin-bottom: 70px;
+    overflow: hidden;
+    
+}
+
+.card1-pizza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin: 10px;
+    margin-bottom: 70px;
+    overflow: hidden;
+    
+}
+
+.card-pizza img {
+    width: 500px;
+    height: 300px;
+    
+    border-radius: 10px;
+
+}
+
+.card-pizza hr {
+    width: 100%;
+}
+
+.titulo-pizza {
+    margin: 20px;
+    text-align: center;
+    
+}
+
+.boton-pizza {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    padding: 20px 0 20px 0;
+}
+
+.segundo-pizza {
+    border: 1px solid #000;
+    background-color: #282c34;
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+.titulo2-pizza {
+    padding: 25px 0 15px 0;
+  
+    
+}
+
+.precio1-pizza {
+    padding: 15px 0 5px 0;
+    font-size: 23px;
+}
+
+.ingredientes-pizza {
+    color: #555 ;
+    text-align: center;
+    padding: 0 20px 0 20px;
+    display: flex;
+}
+
+ul {
+    list-style: none;
+    margin: 5px 0;
+}     
+
+.desc-pizza {
+    
+    color: #333;
+}
+
