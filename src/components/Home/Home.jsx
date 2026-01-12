@@ -2,11 +2,23 @@ import Card from "../Card/Card"
 import Header from "../Header/Header"
 import './home.css'
 import {pizzas} from '../../utils/pizzas.js'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const Home = () => {
-  const [pizzaData, setPizzaData] = useState(pizzas);
+  const [pizzaData, setPizzaData] = useState([]);
+
+  useEffect(() => {
+    consumirApi();
+  }, []);
+
+  const consumirApi = async () => {    
+      const response = await fetch('http://localhost:5000/api/pizzas');
+      const data = await response.json();
+      setPizzaData(data);
+  }
+
+
   return (
     <div>
         <Header></Header>
