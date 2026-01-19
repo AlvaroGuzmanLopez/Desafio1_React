@@ -1,5 +1,5 @@
-import Card from "../Card/Card"
-import Header from "../Header/Header"
+import Card from "../../components/Card/Card.jsx"
+import Header from "../../components/Header/Header.jsx"
 import './home.css'
 import {pizzas} from '../../utils/pizzas.js'
 import { useEffect, useState } from "react"

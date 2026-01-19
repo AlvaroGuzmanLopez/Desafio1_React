@@ -20,7 +20,7 @@
     padding: 3px;
 }
 
-.precio {
+.precionb {
     border: 1px solid lightblue;
     border-radius: 3px;
     color: lightblue;
@@ -28,5 +28,10 @@
     margin-left: auto;
     cursor: pointer;
     background-color: #282c34;
+}   
+
+.cart-link {
+    margin-left: auto;
+    text-decoration: none;
 }   
 

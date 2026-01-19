@@ -1,6 +1,6 @@
 import {pizzaCart} from '../../utils/pizzas.js'
 import { useState } from "react"
-import { formatPrice } from '../../utils/format';
+import { formatPrice } from '../../utils/format.js';
 import './Cart.css'
 
 function Cart() {

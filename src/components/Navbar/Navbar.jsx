@@ -1,5 +1,6 @@
 import { formatPrice } from '../../utils/format';
 import './Navbar.css'
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -11,21 +12,23 @@ const Navbar = () => {
             
         
             <p className='p-navbar'>Pizzería Mamma Mia!</p>
-            <button className='boton-navbar'>🍕 Home</button>
+            <Link to="/"><button className='boton-navbar'>🍕 Home</button></Link>
 
             {token ? (
                 <>
-                <button className='boton-navbar'>🔓 Profile</button>
+                
                 <button className='boton-navbar'>🔒 Logout</button>
                 </>
             ) : (
                 <>
-                <button className='boton-navbar'>🔐 Login</button>
-                <button className='boton-navbar'>🔐 Register</button>
+                
+                <Link to="/register"><button className='boton-navbar'>🔐 Register</button></Link>
+                <Link to="/login"><button className='boton-navbar'>🔐 Login</button></Link>
+                <Link to="/profile"><button className='boton-navbar'>🔓 Profile</button></Link>
                 </>
             )}
 
-            <button className='precio'>🛒 Total: ${formatPrice(total)}</button>
+            <Link className="cart-link" to="/cart"><button className='precionb'>🛒 Total: ${formatPrice(total)}</button></Link>
 
         </div>
     )
