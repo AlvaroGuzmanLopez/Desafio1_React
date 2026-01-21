@@ -1,7 +1,12 @@
 import './Card.css'
 import { formatPrice } from '../../utils/format';
+import { useContext } from 'react';
+import { ContextoGlobal } from '../../context/Context.jsx';
 
 const Card = (props) => {
+
+  const { agregarAlCarrito } = useContext(ContextoGlobal);
+
   return (
     <div>
         <div className="card">
@@ -25,7 +30,8 @@ const Card = (props) => {
           <strong className='precio1'>Precio: ${formatPrice(props.price)}</strong>
           <div className='boton'>
             <button className='primero'>Ver Más </button>
-            <button className='segundo'>Añadir 🛒</button>
+            <button className='segundo' onClick={() => agregarAlCarrito(props)}>Añadir 🛒</button>
+
           </div>
         </div>
     </div>

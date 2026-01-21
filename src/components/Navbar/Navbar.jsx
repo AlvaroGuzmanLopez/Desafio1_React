@@ -1,11 +1,16 @@
+import { useContext } from 'react';
 import { formatPrice } from '../../utils/format';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import { ContextoGlobal } from '../../context/Context.jsx';
 
 
 const Navbar = () => {
-    const total = 25000;
+    
     const token = false;
+
+    const {calculaTotal} = useContext(ContextoGlobal);
+    const total = calculaTotal();
 
     return (
         <div className="navbar">
