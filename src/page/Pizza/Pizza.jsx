@@ -2,6 +2,7 @@ import './Pizza.css'
 import { formatPrice } from '../../utils/format';
 import { useEffect, useState } from "react"
 
+
 const Pizza = () => {
 
 const [pizzaData, setPizzaData] = useState([]);
@@ -16,6 +17,8 @@ const [pizzaData, setPizzaData] = useState([]);
       setPizzaData(data);
       
   }
+
+
 
   return (
     <div className='pizza-page'>
