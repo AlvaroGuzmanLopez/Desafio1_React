@@ -8,7 +8,8 @@ const ContextoGlobalProvider = ({ children }) => {
 
     const [pizzaData, setPizzaData] = useState([]);
     const [cartData, setCartData] = useState([]);
-
+    const [token, setToken] = useState(true);
+    
     useEffect(() => {
         consumirApi();
       }, []);
@@ -63,10 +64,14 @@ const ContextoGlobalProvider = ({ children }) => {
         return cartData.reduce((total, item) => {
             return total + (item.price || 0) * (item.cantidad || 0);
         }, 0);
-      };      
+      };
+      
+      const logout = () => {
+        setToken(false);
+      }
 
     return (
-        <ContextoGlobal.Provider value = {{pizzaData, cartData, agregarAlCarrito, incrementarCantidad, decrementarCantidad, calculaTotal}}>
+        <ContextoGlobal.Provider value = {{pizzaData, cartData, agregarAlCarrito, incrementarCantidad, decrementarCantidad, calculaTotal, token, setToken, logout}}>
             {children}
         </ContextoGlobal.Provider>
     );

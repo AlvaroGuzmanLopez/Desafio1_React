@@ -24,6 +24,7 @@
     height: 30px;
     color: white;
     background-color: #1976D2;
+    cursor: pointer;
 }
 
 .formulario-register input {

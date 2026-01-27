@@ -1,40 +1,43 @@
 import { useContext } from 'react';
 import { formatPrice } from '../../utils/format';
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ContextoGlobal } from '../../context/Context.jsx';
 
 
 const Navbar = () => {
     
-    const token = false;
+    const {token, logout} = useContext(ContextoGlobal);
 
     const {calculaTotal} = useContext(ContextoGlobal);
     const total = calculaTotal();
+
+    const estiloActivo = ({ isActive }) => (
+        isActive ? 'boton-navbar-activo' : 'boton-navbar'
+    );
 
     return (
         <div className="navbar">
             
         
             <p className='p-navbar'>Pizzería Mamma Mia!</p>
-            <Link to="/"><button className='boton-navbar'>🍕 Home</button></Link>
+            <NavLink to="/" className={estiloActivo}>🍕 Home </NavLink>
 
             {token ? (
                 <>
-                
-                <button className='boton-navbar'>🔒 Logout</button>
+                <NavLink to="/profile" className={estiloActivo}>🔓 Profile</NavLink>
+                <NavLink to="/" className= "boton-navbar" onClick={logout}>🔒 Logout</NavLink>
                 </>
             ) : (
                 <>
                 
-                <Link to="/register"><button className='boton-navbar'>🔐 Register</button></Link>
-                <Link to="/login"><button className='boton-navbar'>🔐 Login</button></Link>
-                <Link to="/profile"><button className='boton-navbar'>🔓 Profile</button></Link>
+                <NavLink to="/register" className={estiloActivo}>🔐 Register</NavLink>
+                <NavLink to="/login" className={estiloActivo}>🔐 Login</NavLink>    
+                
                 </>
             )}
 
-            <Link className="cart-link" to="/cart"><button className='precionb'>🛒 Total: ${formatPrice(total)}</button></Link>
-
+            <NavLink to="/cart" className={({ isActive }) => (isActive ? 'precionb-activo' : 'precionb')}>🛒 Total: ${formatPrice(total)}</NavLink>
         </div>
     )
 }
