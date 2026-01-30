@@ -1,11 +1,17 @@
 import './Card.css'
 import { formatPrice } from '../../utils/format';
-import { useContext } from 'react';
+import { use, useContext } from 'react';
 import { ContextoGlobal } from '../../context/Context.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Card = (props) => {
 
-  const { agregarAlCarrito } = useContext(ContextoGlobal);
+  const { agregarAlCarrito, pizzaData } = useContext(ContextoGlobal);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/pizza/${props.id}`);
+  }
 
   return (
     <div>
@@ -29,7 +35,7 @@ const Card = (props) => {
           <hr/>
           <strong className='precio1'>Precio: ${formatPrice(props.price)}</strong>
           <div className='boton'>
-            <button className='primero'>Ver Más </button>
+            <button className='primero' onClick={() => handleClick()}>Ver Más </button>
             <button className='segundo' onClick={() => agregarAlCarrito(props)}>Añadir 🛒</button>
 
           </div>

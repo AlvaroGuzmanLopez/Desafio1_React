@@ -5,7 +5,7 @@ import { ContextoGlobal } from '../../context/Context.jsx';
 import './Cart.css'
 
 function Cart() {
-    const { cartData, incrementarCantidad, decrementarCantidad, calculaTotal } = useContext(ContextoGlobal);
+    const { cartData, incrementarCantidad, decrementarCantidad, calculaTotal, token } = useContext(ContextoGlobal);
     
 
     const total = calculaTotal();
@@ -32,7 +32,7 @@ function Cart() {
             </ul>
    
         <p className='p-cart'>Total: ${formatPrice(total)}</p>
-        <button className='boton-cart'>Pagar</button>
+        <button className={token ? 'boton-cart' : 'boton-cart-disabled'}>Pagar</button>
 
     </div>
   )
