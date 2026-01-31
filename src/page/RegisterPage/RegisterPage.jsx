@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import './RegisterPage.css'
+import { useContext } from 'react'
+import { ContextoGlobal } from '../../context/Context.jsx'
 
 const RegisterPage = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    
+    const {apiRegister} = useContext(ContextoGlobal);
+
+    let ok = true;
 
     const handlechange = (e) => {
         if (e.target.name === 'email') {
@@ -21,26 +27,35 @@ const RegisterPage = () => {
         e.preventDefault();
         if (email.length < 5) {
             alert('El email debe tener al menos 5 caracteres');
+            ok = false
             return;
         }        
         const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/;
         if (!emailPattern.test(email)) {
             alert('El email debe tener el formato: usuario@dominio.com');
+            ok=false
             return;
         }
         if (password.length < 6) {
             alert('La contraseña debe tener al menos 6 caracteres');
+            ok=false
             return;
         }
         if (password !== confirmPassword) {
             alert('Las contraseñas no coinciden');
+            ok=false
             return;
         }
-        alert('Registro exitoso');
+
+        if (ok === true) {
+
+        apiRegister(email, password);
 
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+
+        }
 
 
     }

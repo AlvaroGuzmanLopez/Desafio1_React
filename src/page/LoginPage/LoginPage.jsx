@@ -1,48 +1,61 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './LoginPage.css'
+import { ContextoGlobal } from '../../context/Context.jsx'
 
 const LoginPage = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { apiLogin } = useContext(ContextoGlobal);
+    const [userEmail, setUserEmail] = useState('');
+    const [userPassword, setUserPassword] = useState('');
+
+    let ok = true;
 
     const handlechange = (e) => {
         if (e.target.name === 'email') {
-            setEmail(e.target.value);
+            setUserEmail(e.target.value);
         } else if (e.target.name === 'password') {
-            setPassword(e.target.value);
+            setUserPassword(e.target.value);
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        if (email.length < 5) {
+        
+        
+        if (!userEmail.trim()) {
+            alert('Por favor ingrese su email');
+            ok = false
+            return;
+        }
+        if (userEmail.length < 5) {
             alert('El email debe tener al menos 5 caracteres');
+            ok = false;
             return;
         }        
         const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/;
-        if (!emailPattern.test(email)) {
+        if (!emailPattern.test(userEmail)) {
             alert('El email debe tener el formato: usuario@dominio.com');
+            ok = false;
             return;
         }
-        if (password.length < 6) {
+        if (!userPassword.trim()) {
+            alert('Por favor ingrese su contraseña');
+            ok = false;
+            return;
+        }
+        if (userPassword.length < 6) {
             alert('La contraseña debe tener al menos 6 caracteres');
+            ok = false;
             return;
         }
 
-        //const mail = "prueba@prueba.com"
-        //const pass = "123456"
-
-        //if (email !== mail || password !== pass) {
-        //    alert('Email o contraseña incorrectos');
-        //    return;
-        //}
+        if (ok === true) {
         
-        alert('Login exitoso');
+        await apiLogin(userEmail, userPassword);
+        setUserEmail('');
+        setUserPassword('');
 
-        setEmail('');
-        setPassword('');
-
+        }
     }
 
 
@@ -50,10 +63,10 @@ const LoginPage = () => {
     <div className='formulario-login'>
       <h1>Login</h1>
         <p>E-Mail*</p>
-        <input type="text" required minLength="5" name="email" onChange={handlechange} placeholder="Ingrese su E-Mail" value={email}></input>
+        <input type="text" required minLength="5" name="email" onChange={handlechange} placeholder="Ingrese su E-Mail" value={userEmail}></input>
         <p>Password*</p>
-        <input type="password" required minLength="6" name="password" onChange={handlechange} placeholder="Ingrese su password" value={password}></input>
-        <button type='button' onClick={handleSubmit}>Enviar</button>
+        <input type="password" required minLength="6" name="password" onChange={handlechange} placeholder="Ingrese su password" value={userPassword}></input>
+        <button type='submit' onClick={handleSubmit}>Enviar</button>
     </div>
   )
 }

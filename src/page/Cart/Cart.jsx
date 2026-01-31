@@ -5,10 +5,42 @@ import { ContextoGlobal } from '../../context/Context.jsx';
 import './Cart.css'
 
 function Cart() {
-    const { cartData, incrementarCantidad, decrementarCantidad, calculaTotal, token } = useContext(ContextoGlobal);
+    const { cartData, setCartData, incrementarCantidad, decrementarCantidad, calculaTotal, token, user } = useContext(ContextoGlobal);
     
 
     const total = calculaTotal();
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+    
+    const tokenLocal = localStorage.getItem("token");
+
+    if (!tokenLocal) {
+      alert("Debes estar logueado para realizar la compra");
+      return;
+   }
+
+
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          cart: cartData,
+          total: total,
+        }),
+      });
+
+      const data = await response.json();
+      alert(data?.error || `"Gracias ${user.email || "usuario"}! Payment successful!`);
+
+      setCartData([]);
+      
+  };
+
 
   return (
     <div className='cart-container'>
@@ -32,7 +64,7 @@ function Cart() {
             </ul>
    
         <p className='p-cart'>Total: ${formatPrice(total)}</p>
-        <button className={token ? 'boton-cart' : 'boton-cart-disabled'}>Pagar</button>
+        <button className={token ? 'boton-cart' : 'boton-cart-disabled'} onClick={handleSubmit} type='submit' >Pagar</button>
 
     </div>
   )
